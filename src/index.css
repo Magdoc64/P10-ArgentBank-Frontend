@@ -13,7 +13,13 @@ body {
   min-height: 100vh;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+}
+
 .main {
+  display: flex;
   flex: 1;
 }
 
@@ -35,43 +41,8 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 20px;
-}
-
-.main-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.main-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-.main-nav-item {
-  text-decoration: none;
-  margin-right: 0.5rem;
-}
-
-.main-nav-item:hover {
-  text-decoration: underline;
-}
-
-.main-nav-logo {
-  display: flex;
-  align-items: center;
-}
-
-.main-nav-logo-image {
-  max-width: 100%;
-  width: 200px;
-}
-
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('../src/assets/bank-tree.webp');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -163,6 +134,8 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  border-style: inherit;
+  cursor: pointer;
 }
 
 .sign-in-content {
@@ -171,47 +144,12 @@ body {
   width: 300px;
   margin: 0 auto;
   margin-top: 3rem;
+  margin-bottom: 3rem;
   padding: 2rem;
 }
 
 .sign-in-icon {
   font-size: 5rem;
-}
-
-.input-remember {
-  display: flex;
-}
-
-.input-remember label {
-  margin-left: 0.25rem;
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.input-wrapper label {
-  font-weight: bold;
-}
-
-.input-wrapper input {
-  padding: 5px;
-  font-size: 1.2rem;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  border-top: 2px solid #ccc;
-  padding: 2rem 0 1.5rem;
-}
-
-.footer-text {
-  margin: 0;
-  padding: 0;
 }
 
 .account {
