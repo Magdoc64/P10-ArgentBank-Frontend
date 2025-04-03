@@ -1,0 +1,51 @@
+.edit{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    background-color: #fff;
+    color:#000;
+    margin-top: 20px;
+}
+
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    width:80%;
+    margin:0 auto;
+}
+.form-section{
+    display: flex;
+    border:none;
+    gap:8px;
+}
+.input-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.input-form label{
+    font-weight: bold;
+}
+.input-form input{
+    padding:5px;
+}
+.form-control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    margin: 20px 0;
+}
+
+.form-control button{
+    padding: 5px;
+    background-color: #00bc77;
+    border-color: #00bc77;
+    border-radius: 5px;
+    color: #fff;
+    width: 100px;
+    font-weight: bold;
+}

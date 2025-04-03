@@ -1,45 +1,51 @@
 import Inputs from '../../components/Input/Inputs'
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+import { userLogin } from '../../actions/authAction';
+import { user } from '../../actions/userAction';
 
 const SignUp = () => {
-    const [errorMessage, setErrorMessage] = useState();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const formData = new FormData (form);
-        const username = formData.get('username');
-        const password = formData.get('password');
-
-        let error = [];
-        username === ''? error.push('Username est obligatoire'):null
-        password === ''? error.push('Mot de passe obligatoire'):null
+    const form = useRef();
+    const {userToken, error} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     
-        setErrorMessage(error.join('. '));
-        //navigation vers page si pas error
+    const [errorMessage, setErrorMessage] = useState([]);
+    const page = useNavigate();
+    
+    let errorLogin = [];
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        const email= form.current[0].value;
+        const password= form.current[1].value;
+        dispatch(userLogin({email, password}))
+
+        email === ''? errorLogin.push('Username est obligatoire'):null
+        password === ''? errorLogin.push('Mot de passe obligatoire'):null
+        if (error){
+            errorLogin.push(error);
+        }
+        if (errorLogin.length >0) {
+            setErrorMessage(error.join('. '));
+        }
     }
 
-    return errorMessage !== 0? (
+    useEffect(() => {
+        if (errorLogin.length === 0 && userToken) {
+            dispatch(user({userToken}))
+            page(`/customersSpace`)
+        }
+    },[errorLogin.length,userToken,dispatch,page])
+    
+    return (
         <main className="main bg-dark">
             <section className="sign-in-content">
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
-                <p className='error-msg'>{errorMessage}</p>
-                <form onSubmit={handleSubmit}>
-                    <Inputs type='text' id='username' className='input-wrapper'/>
-                    <Inputs type='password' id='password' className='input-wrapper'/>
-                    <Inputs type='checkbox' id='remembre-me' className='input-remember'/>
-                    <button type='submit' className='sign-in-button'>Sign In</button>
-                </form>
-            </section>
-        </main>
-    ):(
-        <main className="main bg-dark">
-            <section className="sign-in-content">
-                <i className="fa fa-user-circle sign-in-icon"></i>
-                <h1>Sign In</h1>
-                <form onSubmit={handleSubmit}>
-                    <Inputs type='text' id='username' className='input-wrapper'/>
+                {errorMessage !== 0 && <p className='error-msg'>{errorMessage}</p>}
+                <form ref={form} onSubmit={handleSubmit}>
+                    <Inputs type='email' id='email' className='input-wrapper' value=''/>
                     <Inputs type='password' id='password' className='input-wrapper'/>
                     <Inputs type='checkbox' id='remembre-me' className='input-remember'/>
                     <button type='submit' className='sign-in-button'>Sign In</button>

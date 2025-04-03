@@ -13,7 +13,12 @@
 .main-nav a.active {
     color: #42b983;
 }
-  
+.main-nav-id-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
 .main-nav-item {
     display: flex;
     text-decoration: none;
@@ -34,4 +39,14 @@
 .main-nav-logo-image {
     max-width: 100%;
     width: 200px;
+}
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.user-id{
+    font-weight: bold;
+    color:#2c3e50;
 }

@@ -1,13 +1,13 @@
 import './input.css'
 import PropTypes from "prop-types";
 
-const Input = ({type, id, className}) => {
+const Input = ({type, id, className, value}) => {
     let input;
     let inputType=type;
 
     switch(type) {
         case type = "text":
-            input =(<input type="text" id={id} name={id}/>);
+            input =(<input type="text" id={id} name={id} value={value}/>);
         break;
         case type = "email":
             input=(<input type="email" id={id} name={id}/>);

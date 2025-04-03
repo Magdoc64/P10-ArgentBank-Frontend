@@ -1,29 +1,13 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './index.css'
-import Header from '../src/components/Header/Header.jsx'
-import Footer from '../src/components/Footer/Footer.jsx'
-import Home from '../src/pages/Home/index.jsx'
-import SignUp from '../src/pages/SignUp/index.jsx'
-/*import CustomersSpace from '../src/pages/CustomersSpace/index.jsx'
-import Transactions from '../src/pages/CustomersSpace/transaction.jsx'*/
+import store from './app/store.js'
+import { Provider } from 'react-redux'
+import '../src/styles/index.css'
+import App from './app/App.jsx'
+
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Router>
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/signup' element={<SignUp/>}/>
-      </Routes>
-      <Footer/>  
-    </Router>
-  </StrictMode>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
 )
-
-/*
-        <Route path='/signup' element={<CustomersSpace/>}>
-          <Route path='/transactions' element={<Transactions/>}/>
-        </Route>*/
