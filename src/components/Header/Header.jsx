@@ -8,8 +8,8 @@ const Header = () => {
     const page = useNavigate();
     const dispatch = useDispatch();
     const {userToken} = useSelector((state) => state.auth);
-    const user = useSelector (state => state.user);
-    const userFirstName = user.user.firstName;
+    const userDetail = useSelector (state => state.user);
+    const userUserName = userDetail.user.userName;
 
     const handleClick = () => {
         dispatch(logout());
@@ -41,7 +41,7 @@ const Header = () => {
                 <div className="main-nav-id-item">
                     <div className="user">
                         <i className="fa fa-user-circle"></i>
-                        <p className="user-id">{userFirstName}</p>
+                        <p className="user-id">{userUserName}</p>
                     </div>
                     <NavLink to="/signup" onClick={handleClick} className="main-nav-item">
                         <i className="fa fa-sign-in"></i>

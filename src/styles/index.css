@@ -166,4 +166,6 @@ body {
   margin-bottom: 2rem;
 }
 
-
+.error-message{
+  color: #df0d16; 
+}

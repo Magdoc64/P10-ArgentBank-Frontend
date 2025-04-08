@@ -18,9 +18,15 @@ const profileSlice = createSlice({
             state.error = null;
         })
         builder.addCase(profile.fulfilled, (state, {payload}) => {
-            state.user = payload.body;
-            state.loading = false;
-            state.error = null;
+            if(payload.status === 200){
+                state.user = payload.body;
+                state.loading = false;
+                state.error = null;
+            }
+            if(payload.status === 400){
+                state.loading = false;
+                state.error = "Vous n'êtes pas autorisé à faire des modifications";
+            }
         })
         builder.addCase(profile.rejected, (state, {payload}) => {
             state.loading = false;

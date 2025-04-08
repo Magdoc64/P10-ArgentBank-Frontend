@@ -3,26 +3,31 @@ import { useRef} from 'react';
 import './user.css'
 import {profile} from '../../actions/profileAction'
 import { isClosed } from "../../reducers/editReducer";
+import { user } from "../../actions/userAction";
+
 
 const User = () => {
     const form = useRef();
     const dispatch = useDispatch();
-    
-    const user = useSelector (state => state.user);
-    const userFirstName = user.user.firstName;
-    const userLastName = user.user.lastName;
-    const userUserName = user.user.userName;
-    
+
+    const userDetail = useSelector (state => state.user);
+    const userFirstName = userDetail.user.firstName;
+    const userLastName = userDetail.user.lastName;
+    const userUserName = userDetail.user.userName;
+    const error = useSelector(state => state.error);
+
     const auth = useSelector(state => state.auth)
-    const token = auth.userToken;
+    const userToken = auth.userToken;
 
     const isOpened = useSelector(state => state.edit)
     
     const handleSave = () => {
-        const userName = form.current[0].value;
-        
-        dispatch(profile({token,userName}))
-        dispatch(isClosed())
+        if(error.length===0){
+            const userName = form.current[0].value;
+            dispatch(profile({userToken,userName}))
+            dispatch(user({userToken}))
+            dispatch(isClosed())
+        }
     }
     
     const handleCancel = () => {
@@ -32,6 +37,7 @@ const User = () => {
     return isOpened?(
         <div className="edit">
             <h2 className="edit-title">Edit user info</h2>
+            {error!==null && <p className='error-message'>{error}</p>}
             <form ref={form} className="edit-form">
                 <div className="form-section">
                     <label htmlFor="userName">Username :</label>
