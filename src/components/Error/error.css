@@ -1,0 +1,22 @@
+.error{
+    width:100%;
+}
+
+.error-title{
+    font-size: 58px;
+    font-weight: bold;
+    color: #f30610 ;
+    margin: 50px 0;
+}
+.error-text{
+    font-size:32px;
+    color:#f30610;
+    padding: 50px 0;
+}
+.error-link{
+    text-decoration: inherit;
+    color: #000000;
+    margin: 50px 0;
+    font-size: 24px;
+
+}

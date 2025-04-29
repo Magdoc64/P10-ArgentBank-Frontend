@@ -1,4 +1,4 @@
-import articles from "../../data/listArticles"
+import Articles from "../../components/Articles/Articles.jsx"
 
 const Home = () => {
     return (
@@ -14,19 +14,7 @@ const Home = () => {
             </section>
             <section className="features">
                 <h2 className="sr-only">Features</h2>
-                {articles.map (article => 
-                <article className="feature-item" key={article.id}>
-                    <img 
-                        src={article.imageSrc} 
-                        alt={article.imageAlt} 
-                        className="feature-icon" 
-                    />
-                    <h3 className="feature-item-title">{article.title}</h3>
-                    <p>
-                        {article.text}
-                    </p>
-                </article>
-                )}
+                <Articles/>
             </section>
         </main>
     )

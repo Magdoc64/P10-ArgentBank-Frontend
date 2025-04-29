@@ -1,11 +1,14 @@
 //import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import Items from '../../components/Items/Items.jsx'
-import accounts from '../../data/amount.js'
+import Accounts from '../../components/Accounts/Accounts.jsx'
+import accounts from '../../data/accounts.js'
 import User from '../../components/User/User.jsx';
 import { isOpened } from '../../reducers/editReducer.js';
+import Error from '../../components/Error/Error'
 
-const CustomersSpace = () => {
+const Profile = () => {
+    const {userToken} = useSelector((state) => state.auth);
+    
     const user = useSelector (state => state.user);
     const userFirstName = user.user.firstName;
     const userLastName = user.user.lastName;
@@ -17,7 +20,9 @@ const CustomersSpace = () => {
         dispatch(isOpened())
     }
 
-    return open===false?(
+    return userToken===null?(
+        <Error/>
+    ): open===false?(
         <main className="main bg-dark">
             <div className="header">
                 <h1>Welcome back<br />{userFirstName} {userLastName}!</h1>
@@ -25,12 +30,7 @@ const CustomersSpace = () => {
             </div>
             <h2 className="sr-only">Accounts</h2>
             {accounts.map(account => (
-                <section key={account.id} className="account">
-                    <Items account={account}/>
-                    <div className="account-content-wrapper cta">
-                        <button className="transaction-button">{account.button}</button>
-                    </div>
-                </section>
+                <Accounts key={account.id} account={account}/>
             ))}
         </main>
     ):(
@@ -40,15 +40,10 @@ const CustomersSpace = () => {
             </div>
             <h2 className="sr-only">Accounts</h2>
             {accounts.map(account => (
-                <section key={account.id} className="account">
-                    <Items account={account}/>
-                    <div className="account-content-wrapper cta">
-                        <button className="transaction-button">{account.button}</button>
-                    </div>
-                </section>
+                <Accounts key={account.id} account={account}/>
             ))}
         </main>
     )
 }
 
-export default CustomersSpace
+export default Profile

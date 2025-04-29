@@ -21,7 +21,4 @@ const accounts = [
         button:'View transactions'
     }
 ]
-
-
-
 export default accounts

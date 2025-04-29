@@ -14,7 +14,7 @@ const Header = () => {
     const handleClick = () => {
         dispatch(logout());
         if (userToken===null) {
-            page(`/signup`)
+            page(`/login`)
         }
     }
 
@@ -25,7 +25,7 @@ const Header = () => {
                     <img src={Logo} alt="logo ArgentBank" className="main-nav-logo-image"/>
                     <h1 className="sr-only">Argent Bank</h1>
                 </NavLink>
-                <NavLink to="/signup" className="main-nav-item">
+                <NavLink to="/login" className="main-nav-item">
                     <i className="fa fa-user-circle"></i>
                     Sign In
                 </NavLink>
@@ -43,7 +43,7 @@ const Header = () => {
                         <i className="fa fa-user-circle"></i>
                         <p className="user-id">{userUserName}</p>
                     </div>
-                    <NavLink to="/signup" onClick={handleClick} className="main-nav-item">
+                    <NavLink to="/" onClick={handleClick} className="main-nav-item">
                         <i className="fa fa-sign-in"></i>
                         Sign out
                     </NavLink>
@@ -54,15 +54,3 @@ const Header = () => {
 }
 
 export default Header
-
-/*<div>
-        <a class="main-nav-item" href="./user.html">
-          <i class="fa fa-user-circle"></i>
-          Tony
-        </a>
-        <a class="main-nav-item" href="./index.html">
-          <i class="fa fa-sign-out"></i>
-          Sign Out
-        </a>
-      </div>
-*/

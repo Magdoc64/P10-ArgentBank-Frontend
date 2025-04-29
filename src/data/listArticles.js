@@ -21,5 +21,4 @@ const listArticles = [
         text:"We use top of the line encryption to make sure your data and money is always safe."
     }
 ]
-
 export default listArticles

@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin } from '../actions/authAction';
 
-
-
 const initialState = {
     loggedIn:false,
     userToken:null,
@@ -10,7 +8,6 @@ const initialState = {
     error: null,
     success: false,
 }
-
 
 const authSlice = createSlice({
     name: 'auth',
@@ -44,7 +41,6 @@ const authSlice = createSlice({
                 state.error = null
                 state.loading = false;
                 state.success = true;
-                
             }
             if (action.payload.status === 400){
                 state.error = action.payload.message

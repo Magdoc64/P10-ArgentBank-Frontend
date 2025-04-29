@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from '../components/Header/Header.jsx'
 import Footer from '../components/Footer/Footer.jsx'
 import Home from '../pages/Home/index.jsx'
-import SignUp from '../pages/SignUp/index.jsx'
-import CustomersSpace from '../pages/CustomersSpace/index.jsx'
-import Transactions from '../pages/CustomersSpace/transaction.jsx'
+import Login from '../pages/Login/index.jsx'
+import Profile from '../pages/Profile/index.jsx'
+import Error from '../components/Error/Error.jsx'
 
 const App = () => {
     return (
@@ -14,9 +14,9 @@ const App = () => {
                 <Header/>
                     <Routes>
                         <Route path='/' element={<Home/>}/>
-                        <Route path='/signup' element={<SignUp/>}/>
-                        <Route path='/customersSpace' element={<CustomersSpace/>}/>
-                        <Route path='/transactions/:idAccount' element={<Transactions/>}/>
+                        <Route path='/login' element={<Login/>}/>
+                        <Route path='/profile' element={<Profile/>}/>
+                        <Route path='*' element={<Error/>}/>
                     </Routes>
                 <Footer/>  
             </Router>

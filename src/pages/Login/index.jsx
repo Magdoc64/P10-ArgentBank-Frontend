@@ -1,13 +1,14 @@
 import Inputs from '../../components/Input/Inputs'
-import { useEffect, useRef} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
-import { userLogin } from '../../actions/authAction';
-import { loginit } from '../../reducers/authReducer';
-import { user } from '../../actions/userAction';
-import { errorInit, errorEmail, errorPassword} from '../../reducers/errorReducer';
+import { userLogin } from '../../actions/authAction'
+import { loginit } from '../../reducers/authReducer'
+import { user } from '../../actions/userAction'
+import { errorInit, errorEmail, errorPassword} from '../../reducers/errorReducer'
 
-const SignUp = () => {
+
+const Login = () => {
     const form = useRef();
     const dispatch = useDispatch();
     const page = useNavigate();
@@ -36,7 +37,7 @@ const SignUp = () => {
     useEffect(() => {
         if (errorConnect.length === 0 && userToken) {
             dispatch(user({userToken}))
-            page(`/customersSpace`)
+            page(`/profile`)
         }
     },[errorConnect.length,userToken,dispatch,page])
     
@@ -57,4 +58,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default Login
