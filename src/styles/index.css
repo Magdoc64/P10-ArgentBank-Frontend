@@ -43,7 +43,7 @@ body {
 }
 
 .hero {
-  background-image: url('../src/assets/bank-tree.webp');
+  background-image: url('./../assets/bank-tree.webp');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
